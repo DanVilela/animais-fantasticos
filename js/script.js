@@ -5,7 +5,7 @@ const initTabNav = () => {
     if (tabMenu.length && tabContent.length) {
         tabContent[0].classList.add('ativo');
 
-        const activeTab = (index) => {
+        let activeTab = (index) => {
             tabContent.forEach((section) => {
                 section.classList.remove('ativo');
             });
@@ -23,15 +23,15 @@ initTabNav();
 
 const initAccordion = () => {
     const accordionList = document.querySelectorAll('.js-accordion dt');
-    const ativo = 'ativo';
+    const activeClass = 'ativo';
 
     if (accordionList.length) {
-        accordionList[0].classList.add(ativo);
-        accordionList[0].nextElementSibling.classList.add(ativo);
+        accordionList[0].classList.add(activeClass);
+        accordionList[0].nextElementSibling.classList.add(activeClass);
 
         function activeAccordion() {
-            this.classList.toggle(ativo);
-            this.nextElementSibling.classList.toggle(ativo);
+            this.classList.toggle(activeClass);
+            this.nextElementSibling.classList.toggle(activeClass);
         }
 
         accordionList.forEach((item) => {
@@ -41,7 +41,25 @@ const initAccordion = () => {
 }
 initAccordion();
 
+const initAnimaScroll = () => {
+    const sections = document.querySelectorAll('.js-scroll');
+    if (sections.length) {
+        const windowHalf = window.innerHeight * 0.6;
 
+        function animaScroll() {
+            sections.forEach((section) => {
+                const sectionTop = section.getBoundingClientRect().top;
+                const sectionVisible = (sectionTop - windowHalf) < 0;
+                if (sectionVisible)
+                    section.classList.add('ativo');
+                else
+                    section.classList.remove('ativo');
+            })
+        }
 
+        animaScroll();
 
-
+        window.addEventListener('scroll', animaScroll);
+    }
+}
+initAnimaScroll();
