@@ -22,7 +22,6 @@ const initModal = () => {
 }
 
 
-
 export default initModal;
 
 
