@@ -8,10 +8,12 @@ const initAnimaScroll = () => {
             sections.forEach((section) => {
                 const sectionTop = section.getBoundingClientRect().top;
                 const sectionVisible = (sectionTop - windowHalf) < 0;
-                if (sectionVisible)
+                if (sectionVisible) {
                     section.classList.add('ativo');
-                else
+                }
+                else if (section.classList.contains('ativo')) {
                     section.classList.remove('ativo');
+                }
             })
         }
 
@@ -21,4 +23,5 @@ const initAnimaScroll = () => {
     }
 }
 initAnimaScroll();
+
 export default initAnimaScroll;

@@ -14,7 +14,6 @@ const initMenuMobile = () => {
                 menuButton.classList.remove('active');
                 menuList.classList.remove('active');
             });
-
         }
 
         eventos.forEach((evento) => {
@@ -22,12 +21,6 @@ const initMenuMobile = () => {
         });
     }
 }
-
-
-
-
-
-
 
 export default initMenuMobile;
 
